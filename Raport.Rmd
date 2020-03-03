@@ -1,0 +1,67 @@
+---
+title: "Praca domowa 2 - Analiza danych benchmarkowych"
+author: "Igor Kołakowski"
+date: "14 maja 2019"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+Rand <- data.frame(read.csv("./RandIndex.csv"))
+Rand$X <- NULL
+FM <- data.frame(read.csv("./FMIndex.csv"))
+FM$X <- NULL
+Randst <- data.frame(read.csv("./RandIndexStandarized.csv"))
+Randst$X <- NULL
+FMst <- data.frame(read.csv("./FMIndexStandarized.csv"))
+FMst$X <- NULL
+```
+
+## Wprowadzenie
+
+Przeprowadzono analizę hierarchicznych algorytmów analizy skupień z funkcji <b>hclust</b>, a także <b>Genie</b> z pakietu genie.
+
+```{r echo=FALSE}
+kable(Rand)
+kable(FM)
+```
+
+Uwzględniając wszystkie zbiory danych, średnio najbardziej dokładny okazał się algorytm genie. Korzystając z funkcji <b>scale</b> na zebranych danych, zbadano czy standaryzacja ma wpływ na analizę skupień
+
+```{r echo=FALSE}
+kable(Randst)
+kable(FMst)
+```
+
+Standaryzacja danych średnio pogorszyła dokładność klasteryzacji.
+
+## Opracowanie danych 2d
+
+```{r, include=FALSE}
+library(knitr)
+DataNames <- list.files(path="./data",pattern="*.data.gz")
+LabelNames <- list.files(path="./data",pattern="*.labels0.gz")
+
+refK <- read.table(".\\ClusterK\\K.txt")
+
+stats <- sapply(DataNames,function(x){
+  dim(read.table(paste0("./data/",x)))
+})
+statsdf <- as.data.frame(stats)
+dim2 <- colnames(statsdf[,statsdf[2,]==2])
+namesDim2 <- lapply(dim2, function(x){
+  gsub("^(.*?)\\..*", "\\1",x)
+})
+disp2d <- c("twosplashes","z3","unbalance","target","engytime","compound")
+src <- lapply(disp2d, function(DataName) knit_expand(file = "2dTemplate.Rmd",delim=c("@","@")))
+```
+
+`r knit(text = unlist(src))`
+
+
+
+
+

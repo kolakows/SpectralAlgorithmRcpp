@@ -1,0 +1,19 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+### Podglad klasteryzacji zbioru "@DataName@", liczba klastrow: @refK[DataName,]@
+
+<p align="center">
+  <img src="C:\\ReposR\\R\\PD2\\2d\\@DataName@\\GroundTruth.png" width="200" />
+  <img src="C:\\ReposR\\R\\PD2\\2d\\@DataName@\\GeniePlot.png" width="200" />
+  <img src="C:\\ReposR\\R\\PD2\\2d\\@DataName@\\ward.DPlot.png" width="200" />
+  <img src="C:\\ReposR\\R\\PD2\\2d\\@DataName@\\ward.D2Plot.png" width="200" />
+  <img src="C:\\ReposR\\R\\PD2\\2d\\@DataName@\\singlePlot.png" width="200" />
+  <img src="C:\\ReposR\\R\\PD2\\2d\\@DataName@\\completePlot.png" width="200"/>
+  <img src="C:\\ReposR\\R\\PD2\\2d\\@DataName@\\averagePlot.png" width="200"/>
+  <img src="C:\\ReposR\\R\\PD2\\2d\\@DataName@\\mcquittyPlot.png" width="200"/>
+  <img src="C:\\ReposR\\R\\PD2\\2d\\@DataName@\\medianPlot.png" width="200"/>
+  <img src="C:\\ReposR\\R\\PD2\\2d\\@DataName@\\centroidPlot.png" width="200"/>
+</p>
